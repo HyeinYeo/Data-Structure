@@ -5,7 +5,12 @@
 //                단말노드의 경우엔 양쪽 모두 null이기 때문에 균형인수 0 
 int getBF(AvlNode *root){
 	if (root == NULL) return 0;
-	return getBF(root->left) - getBF(root->right);
+	return get_height(root->left) - get_height(root->right);
+}
+
+int get_height(AvlNode *root){
+	if (!root) return 0;
+	return 1 + max(get_height(root->left), get_height(root->right));
 }
 
 // 2. 균형화 함수
